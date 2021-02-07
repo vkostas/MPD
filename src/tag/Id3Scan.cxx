@@ -62,6 +62,14 @@
 #define ID3_FRAME_LABEL "TPUB"
 #endif
 
+#ifndef ID3_FRAME_CONDUCTOR
+#define ID3_FRAME_CONDUCTOR "TPE3"
+#endif
+
+#ifndef ID3_FRAME_PERFORMER
+#define ID3_FRAME_PERFORMER "TPE4"
+#endif
+
 gcc_pure
 static id3_utf8_t *
 tag_id3_getstring(const struct id3_frame *frame, unsigned i) noexcept
@@ -352,9 +360,9 @@ scan_id3_tag(const struct id3_tag *tag, TagHandler &handler) noexcept
 			    handler);
 	tag_id3_import_text(tag, ID3_FRAME_COMPOSER, TAG_COMPOSER,
 			    handler);
-	tag_id3_import_text(tag, "TPE3", TAG_PERFORMER,
+	tag_id3_import_text(tag, ID3_FRAME_CONDUCTOR, TAG_CONDUCTOR,
 			    handler);
-	tag_id3_import_text(tag, "TPE4", TAG_PERFORMER, handler);
+	tag_id3_import_text(tag, ID3_FRAME_PERFORMER, TAG_PERFORMER, handler);
 	tag_id3_import_text(tag, "TIT1", TAG_GROUPING, handler);
 	tag_id3_import_comment(tag, ID3_FRAME_COMMENT, TAG_COMMENT,
 			       handler);
